@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Drip Cafe - Home</title>
+    <link rel="stylesheet" href="../css/main.css" />
+    <link href="https://fonts.googleapis.com/css2?family=Baloo+2:wght@400;700&family=Marck+Script&display=swap"
+        rel="stylesheet" />
+    <link rel="icon" href="../img/favicon.png" />
+</head>
+
+<body>
+    <header>
+        <div class="second-header">
+            <div class="menu-btn">
+                <span class="menu-btn__burger"></span>
+            </div>
+
+            <nav class="nav">
+                <ul class="menu-nav">
+                    <li class="menu-nav__item">
+                        <a href="index.html" class="logo menu-nav__link">
+                            <img src="../img/favicon.png" />
+                            <span class="logo-first">Drip</span>
+                            <span class="logo-last">Cafe</span>
+                        </a>
+                    </li>
+                    <li class="menu-nav__item">
+                        <a href="sign-in.html" class="sign-in menu-nav__link">
+                            <i class="fa fa-user" aria-hidden="true"></i>
+                            Sign In
+                        </a>
+                        <span class="menu-nav__link" id="slash">/</span>
+                        <a href="sign-up.html" class="sign-up menu-nav__link">
+                            Sign Up
+                        </a>
+                    </li>
+                    <br />
+                    <li class="menu-nav__item active">
+                        <a href="index.html" class="menu-nav__link"> Home </a>
+                    </li>
+                    <li class="menu-nav__item">
+                        <a href="menu.html" class="menu-nav__link"> Menu </a>
+                    </li>
+                    <li class="menu-nav__item">
+                        <a href="services.html" class="menu-nav__link"> Services </a>
+                    </li>
+                    <li class="menu-nav__item">
+                        <a href="contact.html" class="menu-nav__link"> Contact </a>
+                    </li>
+
+                    <li class="menu-nav__item">
+                        <a href="#!" class="menu-nav__link cart__openBtn">
+                            <i class="fa fa-cart-plus" aria-hidden="true"></i>
+
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <!-- Shopping Cart -->
+        <div class="cart-overlay">
+            <div class="cart">
+                <div class="cart__closeBtn">
+                    <i class="fas fa-window-close"></i>
+                </div>
+                <h2>
+                    <i class="fa fa-cart-arrow-down"></i>
+                    <span class="span-primary">Shopping</span> Cart
+                    <i class="fa fa-cart-arrow-down"></i>
+                    <li class="menu-nav__item">
+                        <a href="checkout.html" class="menu-nav__link"> Check Out </a>
+                    </li>
+                </h2>
+
+                <!-- JS will add items here -->
+                <div class="item1-display"></div>
+                <div class="item2-display"></div>
+                <div class="item3-display"></div>
+                <div class="item4-display"></div>
+                <div class="item5-display"></div>
+                <div class="item6-display"></div>
+                <div class="item7-display"></div>
+                <div class="item8-display"></div>
+                <div class="item9-display"></div>
+                <div class="item10-display"></div>
+                <div class="item11-display"></div>
+                <div class="item12-display"></div>
+                <div class="total"></div>
+            </div>
+        </div>
+    </header>
+
+    <div class="container mt-4">
+        <h2>Checkout</h2>
+        <form>
+            <div class="container mt-4 form-container">
+                <label for="fullName" class="form-label">Full Name</label>
+                <input type="text" class="form-control" id="fullName" required>
+            </div>
+            <div class="mb-3">
+                <label for="email" class="form-label">Email address</label>
+                <input type="email" class="form-control" id="email" required>
+            </div>
+            <div class="mb-3">
+                <label for="address" class="form-label">Address</label>
+                <textarea class="form-control" id="address" rows="3" required></textarea>
+            </div>
+            <div class="mb-3">
+                <label for="creditCard" class="form-label">Credit Card Number</label>
+                <input type="text" class="form-control" id="creditCard" required>
+            </div>
+            <div class="mb-3">
+                <label for="expiryDate" class="form-label">Expiry Date</label>
+                <input type="text" class="form-control" id="expiryDate" placeholder="MM/YY" required>
+            </div>
+            <div class="mb-3">
+                <label for="cvv" class="form-label">CVV</label>
+                <input type="text" class="form-control" id="cvv" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Confirm Order</button>
+        </form>
+    </div>
+
+    <script src="../js/script.js"></script>
+    <script src="https://kit.fontawesome.com/c057664144.js" crossorigin="anonymous"></script>
+</body>
+
+</html>
