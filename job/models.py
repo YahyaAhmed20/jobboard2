@@ -105,4 +105,74 @@ class Category(models.Model):
         ]
         
         
-        
+from django.db import models
+from django.core.validators import FileExtensionValidator
+from django.utils.timezone import now
+
+class Apply(models.Model):
+    """
+    Model representing a job application submitted by a candidate.
+    """
+
+    # Fields
+    job = models.ForeignKey(
+        Job,
+        related_name='applications',
+        on_delete=models.CASCADE,
+        verbose_name="Job Applied For",
+        help_text="The job this application is for."
+    )
+    name = models.CharField(
+        max_length=50,
+        verbose_name="Full Name",
+        help_text="The full name of the applicant."
+    )
+    email = models.EmailField(
+        max_length=100,
+        verbose_name="Email Address",
+        help_text="The email address of the applicant."
+    )
+    website = models.URLField(
+        null=True,
+        blank=True,
+        verbose_name="Personal Website",
+        help_text="Optional: The applicant's personal or portfolio website."
+    )
+    cv = models.FileField(
+        upload_to='applications/cvs/',
+        verbose_name="CV/Resume",
+        help_text="Upload your CV or resume in PDF or DOCX format.",
+        validators=[FileExtensionValidator(allowed_extensions=['pdf', 'docx'])]
+    )
+    cover_letter = models.TextField(
+        max_length=500,
+        verbose_name="Cover Letter",
+        help_text="A brief introduction and why you're a good fit for the job."
+    )
+    created_at = models.DateTimeField(
+        default=now,
+        editable=False,
+        verbose_name="Application Date",
+        help_text="The date and time when the application was submitted."
+    )
+
+    # Metadata
+    class Meta:
+        verbose_name = "Job Application"
+        verbose_name_plural = "Job Applications"
+        ordering = ['-created_at']  # Newest applications first
+
+    # Methods
+    def __str__(self):
+        """
+        Returns a string representation of the application.
+        """
+        return f"{self.name} - {self.job.title}"
+
+    def clean(self):
+        """
+        Custom validation for the model.
+        """
+        super().clean()
+        if not self.cv:
+            raise ValueError("A CV or resume must be uploaded.")
