@@ -10,7 +10,7 @@ class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     city = models.ForeignKey('City', related_name='user_city', on_delete=models.CASCADE, blank=True, null=True)
     phone_number = models.CharField(max_length=15, blank=True, null=True)
-    image = models.ImageField(upload_to='profile/')
+    image = models.ImageField(upload_to='profile/', blank=True, null=True)
     cv = models.FileField(
         upload_to='applications/cvs/',
         verbose_name="CV/Resume",
@@ -19,6 +19,12 @@ class Profile(models.Model):
         blank=True,  # Allow blank values in forms
         null=True    # Allow null values in the database
     )
+    
+    def delete(self, *args, **kwargs):
+        # Delete the associated image file
+        if self.image:
+            self.image.delete(save=False)
+        super().delete(*args, **kwargs)
     def __str__(self):
         return str(self.user)
 

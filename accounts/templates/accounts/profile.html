@@ -35,13 +35,11 @@
 
                             <div>
                                 {% if profile.image %}
-
                                 <img src="{{ profile.image.url }}" alt="{{ profile.user.username }}'s Profile Picture" 
                                      class="profile-image" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;">
-                                     {% else %}
-
-                                     <img style="height: 120px; width: 120px;"  src="{% static 'dist/img/photo1.png' %}" alt="" class="img-circle img-fluid">
-                                     {% endif  %}
+                                {% else %}
+                                <img style="height: 120px; width: 120px;" src="{% static 'dist/img/photo1.png' %}" alt="" class="img-circle img-fluid">
+                                {% endif %}
                             </div>
                             <ul>
                                 <li>Name: <span>{{profile}}</span></li>
