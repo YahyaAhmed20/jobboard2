@@ -7,7 +7,7 @@ from .forms import ApplyForm,Jobform
 def job_list(request):
     # Return all job 
     job_list = Job.objects.all()
-    paginator = Paginator(job_list, 1)
+    paginator = Paginator(job_list, 2)
     page_number = request.GET.get('page')
     job_list = paginator.get_page(page_number)
 

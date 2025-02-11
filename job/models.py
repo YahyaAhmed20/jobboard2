@@ -2,7 +2,9 @@ from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
 from django.utils.crypto import get_random_string
-
+from django.db import models
+from django.core.validators import FileExtensionValidator
+from django.utils.timezone import now
 JOB_TYPE_CHOICES = [
     ('Full-Time', 'Full-Time'),
     ('Part-Time', 'Part-Time'),
@@ -105,9 +107,7 @@ class Category(models.Model):
         ]
         
         
-from django.db import models
-from django.core.validators import FileExtensionValidator
-from django.utils.timezone import now
+
 
 class Apply(models.Model):
     """

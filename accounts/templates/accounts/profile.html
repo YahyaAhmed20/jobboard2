@@ -1,0 +1,81 @@
+{% extends 'base.html' %}
+{% load static %}
+{% load bootstrap4 %}
+
+
+{% block body%}
+
+
+    <!-- bradcam_area  -->
+    <div class="bradcam_area bradcam_bg_1">
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-12">
+                    <div class="bradcam_text">
+                        <h3>{{job}}</h3>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ bradcam_area  -->
+
+    <div class="job_details_area">
+        <div class="container">
+            <div class="row">
+                
+                <div class="col-lg-8 mx-auto">
+                    <div class="Profile_sumary">
+                        <div class="summery_header">
+                            <h3>Profile Summery</h3>
+                            <hr>
+                        </div>
+                        <div class="job_content">
+
+
+                            <div>
+                                {% if profile.image %}
+
+                                <img src="{{ profile.image.url }}" alt="{{ profile.user.username }}'s Profile Picture" 
+                                     class="profile-image" style="width: 100px; height: 100px; border-radius: 50%; object-fit: cover;">
+                                     {% else %}
+
+                                     <img style="height: 120px; width: 120px;"  src="{% static 'dist/img/photo1.png' %}" alt="" class="img-circle img-fluid">
+                                     {% endif  %}
+                            </div>
+                            <ul>
+                                <li>Name: <span>{{profile}}</span></li>
+                                <br>
+
+                                <li>Email: <span>{{profile.user.email}}</span></li>
+                                <br>
+
+                                <li>phone_number: <span>{{profile.phone_number}}</span></li>
+                                <br>
+
+                                <li>Address:<span>{{profile.city}}</span></li>
+                                <br>
+                                <li>CV: 
+                                    <span>
+                                        {% if profile.cv %}
+                                            <a href="{{ profile.cv.url }}" target="_blank">Download CV</a>
+                                        {% else %}
+                                            No CV uploaded
+                                        {% endif %}
+                                    </span>
+                                </li>
+                                <br>
+
+                            </ul>
+                        </div>
+                        <div class="p-5">
+                            <a class="boxed-btn3 w-100" href="{% url 'accounts:profile_edit' %}">Profile Edit</a>
+                    </div>
+                    
+                   
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock body %}
