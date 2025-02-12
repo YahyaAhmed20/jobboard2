@@ -3,6 +3,6 @@ from . import views
 
 app_name='contact'
 urlpatterns = [
-    path('', views.contactus, name='contact'),  # URL for the job list view
+    path('', views.send_text, name='send_text'),  # URL for the job list view
   
 ]
