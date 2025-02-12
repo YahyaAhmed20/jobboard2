@@ -3,18 +3,23 @@ from django.shortcuts import render,get_object_or_404,redirect
 from .models import Job
 from django.core.paginator import Paginator
 from django.contrib.auth.decorators import login_required
-
+from .filters import JobFilter
 from .forms import ApplyForm,Jobform
 # Create your views here.
 
 def job_list(request):
     # Return all job 
     job_list = Job.objects.all()
+    myfilter = JobFilter(request.GET, queryset=job_list)
+    job_list = myfilter.qs
+
+    
+
     paginator = Paginator(job_list, 2)
     page_number = request.GET.get('page')
     job_list = paginator.get_page(page_number)
 
-    context = {'job_list': job_list} # Define context outside the else block
+    context = {'job_list': job_list,'myfilter': myfilter} # Define context outside the else block
     return render(request, 'job/job_list.html', context)
 
 
