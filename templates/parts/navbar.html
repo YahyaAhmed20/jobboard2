@@ -17,13 +17,13 @@
                                     <ul id="navigation">
                                         <li><a href="{% url 'home:home' %}">home</a></li>
                                         <li><a href="{% url 'jobs:job_list' %}">Browse Job</a></li>
-                                        <li><a href="">pages <i class="ti-angle-down"></i></a>
+                                        {% comment %} <li><a href="">pages <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
                                                 {% for job_list in job_list  %}
                                                 <li><a href="{% url 'jobs:job_detail' job_list.slug %}">job details </a></li>
                                                 {% endfor %}
                                             </ul>
-                                        </li>
+                                        </li> {% endcomment %}
                                         <li><a href="#">blog <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
                                                 <li><a href="{% url 'blog:blog'  %}">blog</a></li>
