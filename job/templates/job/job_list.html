@@ -110,9 +110,12 @@
                                     <div class="serch_cat d-flex justify-content-end">
                                         <select>
                                             <option data-display="Most Recent">Most Recent</option>
-                                            <option value="1">Marketer</option>
-                                            <option value="2">Wordpress </option>
-                                            <option value="4">Designer</option>
+
+                                            {% for job_list in job_list %}
+
+                                            <option value="1">{{job_list.category}}</option>
+                                            {% endfor %}
+                                           
                                         </select>
                                     </div>
                                 </div>

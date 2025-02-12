@@ -26,4 +26,9 @@ urlpatterns = [
     path('accounts/', include('accounts.urls',namespace='accounts')),
     path('admin/', admin.site.urls),
     path('jobs/', include('job.urls',namespace='jobs')),  # Include the job app's URLs
+    path('contact-us/', include('contact.urls',namespace='contact')),  # Include the job app's URLs
+    path('blog/', include('blog.urls',namespace='blog')),  # Include the job app's URLs
+    path('', include('home.urls',namespace='home')),  # Include the job app's URLs
+    
+    
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

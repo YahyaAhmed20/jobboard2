@@ -1,6 +1,9 @@
+
 from django.shortcuts import render,get_object_or_404,redirect
 from .models import Job
 from django.core.paginator import Paginator
+from django.contrib.auth.decorators import login_required
+
 from .forms import ApplyForm,Jobform
 # Create your views here.
 
@@ -38,27 +41,22 @@ def job_detail(request, slug):
 
 
 
+@login_required  # Add this decorator to enforce login requirement
 def add_job(request):
-    if request.method=='POST':
-        form1=Jobform(request.POST,request.FILES)
+    if request.method == 'POST':
+        form1 = Jobform(request.POST, request.FILES)
         if form1.is_valid():
-            myform=form1.save(commit=False)
-            myform.owner=request.user
+            myform = form1.save(commit=False)
+            myform.owner = request.user  # Assign the current user as the owner
             myform.save()
-            
-           
-            return redirect('jobs:job_list')
-
-
-            
+            return redirect('jobs:job_list')  # Redirect to job list after saving
     else:
-        form1=Jobform()
-        
-    context = {
-            
-        'form1':form1
-         
-        }
+        form1 = Jobform()  # Initialize an empty form for GET requests
 
-    
-    return render(request,'job/add_job.html',context)
+    context = {
+        'form1': form1,
+    }
+
+    return render(request, 'job/add_job.html', context)
+
+

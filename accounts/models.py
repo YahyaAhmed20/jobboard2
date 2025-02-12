@@ -20,6 +20,7 @@ class Profile(models.Model):
         null=True    # Allow null values in the database
     )
     
+    
     def delete(self, *args, **kwargs):
         # Delete the associated image file
         if self.image:

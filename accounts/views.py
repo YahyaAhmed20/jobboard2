@@ -1,3 +1,4 @@
+from django.contrib.auth.decorators import login_required
 from urllib import request
 from django.shortcuts import redirect, render,get_object_or_404
 from .forms import SignupForm,UserForm,ProfileForm
@@ -21,6 +22,7 @@ def signup(request):
         form = SignupForm()
     return render(request, 'registration/signup.html', {'form': form})
 
+@login_required  # Ensures only authenticated users can access this view
 def profile(request):
     profile, created = Profile.objects.get_or_create(user=request.user)
     return render(request, 'accounts/profile.html', {'profile': profile})
@@ -39,3 +41,5 @@ def profile_edit(request):
         profileform = ProfileForm(instance=profile)
     
     return render(request, 'accounts/profile_edit.html', {'userform': userform, 'profileform': profileform})
+
+
