@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'bootstrap4',
     'django_filters',
+    'rest_framework',
 
 
     # apps
@@ -49,6 +50,8 @@ INSTALLED_APPS = [
      'blog',
      'contact',
 ]
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',

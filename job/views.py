@@ -1,11 +1,13 @@
 
 from django.shortcuts import render,get_object_or_404,redirect
-from .models import Job
 from django.core.paginator import Paginator
+from .models import Job
 from django.contrib.auth.decorators import login_required
 from .filters import JobFilter
 from .forms import ApplyForm,Jobform
-# Create your views here.
+
+
+
 
 def job_list(request):
     # Return all job 

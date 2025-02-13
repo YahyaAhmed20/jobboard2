@@ -29,6 +29,7 @@ urlpatterns = [
     path('contact-us/', include('contact.urls',namespace='contact')),  # Include the job app's URLs
     path('blog/', include('blog.urls',namespace='blog')),  # Include the job app's URLs
     path('', include('home.urls',namespace='home')),  # Include the job app's URLs
+
     
     
 ]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
