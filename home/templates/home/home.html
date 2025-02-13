@@ -171,7 +171,18 @@
                         <div class="single_jobs white-bg d-flex justify-content-between">
                             <div class="jobs_left d-flex align-items-center">
                                 <div class="thumb">
-                                    <img src="{% static 'img/svg_icon/1.svg' %}" alt="">
+                                    {% if job_list.image %}
+                                            <img style="height: 80px; width: 80px;" src="{{ job_list.image.url }}" alt="">
+                                        {% else %}
+                                            <img style="height: 80px; width: 80px;" src="{% static 'img/svg_icon/1.svg' %}" alt="">
+                                             {% comment %} <img src="{% static 'img/svg_icon/1.svg' %}" alt=""> {% endcomment %}
+
+                                        {% endif %}
+                                    {% comment %} <img src="{% static 'img/svg_icon/1.svg' %}" alt=""> {% endcomment %}
+
+
+
+                                    
                                 </div>
                                 <div class="jobs_conetent">
                                     <a href="{% url 'home:home_job_details' job.slug %}"><h4>{{ job.title }}</h4></a>
