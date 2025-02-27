@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 
 from pathlib import Path
 import os
+import django_heroku
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -67,6 +68,7 @@ CRISPY_TEMPLATE_PACK = 'bootstrap5'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',  # Add this line
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -147,6 +149,9 @@ STATICFILES_DIRS=[
     os.path.join(BASE_DIR,'project/static')
 ]
 
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+
 
 MEDIA_ROOT=os.path.join(BASE_DIR,"media")
 MEDIA_URL='/media/'
@@ -163,3 +168,7 @@ EMAIL_HOST_USER ='yahmdh6@gmail.com'
 EMAIL_HOST_PASSWORD='nzmcfxgowwjxlofn'
 EMAIL_USE_TLS =True
 EMAIL_PORT= 587
+
+
+
+django_heroku.settings(locals())
