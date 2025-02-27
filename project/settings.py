@@ -44,12 +44,24 @@ INSTALLED_APPS = [
     'rest_framework',
 
 
+# third party
+    'crispy_forms',
+    'crispy_bootstrap5',
+    'markdown_deux',
+    'pagedown',
+    # local apps
+    'comments',
+    'posts',
+
     # apps
      'job',
      'home',
-     'blog',
      'contact',
 ]
+
+
+CRISPY_TEMPLATE_PACK = 'bootstrap5'
+
 
 
 

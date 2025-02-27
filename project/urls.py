@@ -24,12 +24,19 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('accounts/', include('django.contrib.auth.urls')),
     path('accounts/', include('accounts.urls',namespace='accounts')),
+
     path('admin/', admin.site.urls),
+    path('comments/', include("comments.urls", namespace='comments')),
     path('jobs/', include('job.urls',namespace='jobs')),  # Include the job app's URLs
     path('contact-us/', include('contact.urls',namespace='contact')),  # Include the job app's URLs
-    path('blog/', include('blog.urls',namespace='blog')),  # Include the job app's URLs
+    # path('blog/', include('blog.urls',namespace='blog')),  # Include the job app's URLs
     path('', include('home.urls',namespace='home')),  # Include the job app's URLs
+    path('posts/', include("posts.urls", namespace='posts')),
 
     
     
-]+ static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+]
+
+if settings.DEBUG:
+    urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

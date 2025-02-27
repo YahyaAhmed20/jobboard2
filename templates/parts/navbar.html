@@ -26,7 +26,7 @@
                                         </li> {% endcomment %}
                                         <li><a href="#">blog <i class="ti-angle-down"></i></a>
                                             <ul class="submenu">
-                                                <li><a href="{% url 'blog:blog'  %}">blog</a></li>
+                                                <li><a href="{% url 'posts:list'  %}">blog</a></li>
                                             </ul>
                                         </li>
                                         <li><a href="{% url 'contact:send_text' %}">Contact</a></li>
@@ -46,8 +46,11 @@
                         {% endif %}
                                 </div>
                                 <div class="d-none d-lg-block">
+                                    {% if request.resolver_match.app_name == 'posts' %}
+                                    <a class="boxed-btn3" href="{% url 'posts:create' %}">Post a Blog</a>
+                                {% else %}
                                     <a class="boxed-btn3" href="{% url 'jobs:add_job' %}">Post a Job</a>
-                                </div>
+                                {% endif %}                                </div>
                             </div>
                         </div>
                         <div class="col-12">
